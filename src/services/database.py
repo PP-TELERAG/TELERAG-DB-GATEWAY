@@ -40,9 +40,9 @@ class MongoDBService:
         result = collection.delete_one(query)
         return result.deleted_count
 
-    def get_all_documents(self, collection_name: str):
+    def get_all_documents(self, collection_name: str, param: dict = None):
         collection = self.db[collection_name]
-        documents = collection.find()
+        documents = collection.find(param) if param else collection.find()
         return list(documents)
 
 

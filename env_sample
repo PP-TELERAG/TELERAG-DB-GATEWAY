@@ -1,9 +1,9 @@
 # FASTAPI SETTINGS
 APP_NAME="MongoDB FastAPI Gateway"
 APP_VERSION="0.0.1"
-ACCESS_USERNAME="admin"
+ACCESS_USERNAME="telerag_db"
+# GEN ACCESS PASSWORD openssl rand --base64 32
 ACCESS_PASSWORD="password"
-DEBUG=False
 
 # MONGODB SETTINGS
 MONGO_HOST="localhost"

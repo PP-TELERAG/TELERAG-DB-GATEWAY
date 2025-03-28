@@ -1,7 +1,7 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 
 from src.api.user import router as user_router
-from src.services.auth_validation import verify_credentials
+from src.api.channel import router as channel_router
 from src.settings.config import settings
 
 
@@ -11,13 +11,4 @@ app = FastAPI(
 )
 
 app.include_router(user_router, prefix="/api/v1")
-
-
-@app.get("/")
-async def root(access: str = Depends(verify_credentials)):
-    return {"message": "Hello World"}
-
-
-@app.get("/users/me")
-def read_current_user(access: str = Depends(verify_credentials)):
-    return {"message": f"Hello, {access}!"}
+app.include_router(channel_router, prefix="/api/v1")
